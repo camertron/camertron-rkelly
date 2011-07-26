@@ -102,10 +102,10 @@ module RKelly
         longest_token = nil
 
         @lexemes.each { |lexeme|
-          next if lexeme.name == :REGEXP && !accepting_regexp
-
           match = lexeme.match(string)
+          next if lexeme.name == :REGEXP && !accepting_regexp
           next if match.nil?
+          next if lexeme.name == :REGEXP && !regexp_is_valid(match.value)
           longest_token = match if longest_token.nil?
           next if longest_token.value.length >= match.value.length
           longest_token = match
@@ -124,6 +124,15 @@ module RKelly
     private
     def token(name, pattern = nil, &block)
       @lexemes << Lexeme.new(name, pattern, &block)
+    end
+
+    def regexp_is_valid(str)
+      str = str.chomp("/")
+      str = str[1..-1] if str.size > 0 && str[0].chr == "/"
+      Regexp.new(str)
+      return true
+    rescue => e
+      return false
     end
 
     def followable_by_regex(current_token)
