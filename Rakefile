@@ -6,7 +6,7 @@ Hoe.plugin :git     # `gem install hoe-git`
 
 GENERATED_PARSER = "lib/rkelly/generated_parser.rb"
 
-HOE = Hoe.spec('rkelly-twitter') do |p|
+HOE = Hoe.spec('camertron-rkelly') do |p|
   developer('Aaron Patterson', 'aaron.patterson@gmail.com')
   self.readme_file   = 'README.rdoc'
   self.history_file  = 'CHANGELOG.rdoc'
