@@ -1,5 +1,14 @@
 = RKelly CHANGELOG
 
+=== 1.0.4
+
+* Bugfixes
+
+  * Gem forked from http://github.com/tenderlove/rkelly and renamed rkelly-twitter
+  * Merged in ParentheticalNode changes from egypt fork: http://github.com/egypt/rkelly
+  * Fixed ParentheticalNode problem that was causing the void in "void(0);" to be interpreted as a keyword instead of a function call
+  * Fixed the case where the "/ 2) /" in "var foo = (1 / 2) / 3" was being treated as a regular expression instead of division
+
 === 1.0.3
 
 * Bugfixes
