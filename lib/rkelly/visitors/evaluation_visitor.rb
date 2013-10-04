@@ -71,7 +71,7 @@ module RKelly
       def visit_MultiplyNode(o)
         left = to_number(o.left.accept(self)).value
         right = to_number(o.value.accept(self)).value
-        return_val = 
+        return_val =
           if [left, right].any? { |x| x.respond_to?(:nan?) && x.nan? }
             RKelly::JS::NaN.new
           else
@@ -86,7 +86,7 @@ module RKelly
       def visit_DivideNode(o)
         left = to_number(o.left.accept(self)).value
         right = to_number(o.value.accept(self)).value
-        return_val = 
+        return_val =
           if [left, right].any? { |x|
             x.respond_to?(:nan?) && x.nan? ||
             x.respond_to?(:intinite?) && x.infinite?
@@ -105,7 +105,7 @@ module RKelly
       def visit_ModulusNode(o)
         left = to_number(o.left.accept(self)).value
         right = to_number(o.value.accept(self)).value
-        return_val = 
+        return_val =
           if [left, right].any? { |x| x.respond_to?(:nan?) && x.nan? }
             RKelly::JS::NaN.new
           elsif [left, right].all? { |x| x.respond_to?(:infinite?) && x.infinite? }
@@ -315,7 +315,7 @@ module RKelly
           when Numeric
             object.value
           when ::String
-            s = object.value.gsub(/(\A[\s\xB\xA0]*|[\s\xB\xA0]*\Z)/, '')
+            s = object.value.gsub(/(\A[\s\xA0]*|[\s\xA0]*\Z)/, '')
             if s.length == 0
               0
             else
